@@ -5,6 +5,7 @@ import dev.isxander.shotify.api.updater.ShotifyUpdateChecker
 import dev.isxander.shotify.config.ShotifyConfig
 import dev.isxander.shotify.share.TwitterShareTask
 import dev.isxander.shotify.ui.preview.ScreenshotPreview
+import dev.isxander.shotify.upload.AscellaUploadTask
 import dev.isxander.shotify.upload.ImgurUploadTask
 import dev.isxander.shotify.util.Screenshot
 import dev.isxander.shotify.util.logger
@@ -59,8 +60,10 @@ object Shotify : ClientModInitializer {
     fun handleScreenshot(nativeImage: NativeImage, file: File) {
         var screenshot = Screenshot(nativeImage, file)
 
-        if (ShotifyConfig.uploadToImgur)
+        if (ShotifyConfig.uploadProvider == ShotifyConfig.UploadProvider.Imgur)
             screenshot = ImgurUploadTask.upload(screenshot)
+        else if (ShotifyConfig.uploadProvider == ShotifyConfig.UploadProvider.Ascella)
+            screenshot = AscellaUploadTask.upload(screenshot)
         if (ShotifyConfig.copyUploadedUrlToClipboard)
             screenshot.url?.let { UDesktop.setClipboardString(it.toString()) }
 

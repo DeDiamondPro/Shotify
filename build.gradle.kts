@@ -54,6 +54,8 @@ dependencies {
     include(modImplementation("dev.isxander:settxi-cloth-impl:1.+")!!)
 
     include(implementation("org.bundleproject:libversion:0.0.+")!!)
+    shade(implementation("org.apache.httpcomponents:httpclient:4.5.13")!!)
+    shade(implementation("org.apache.httpcomponents:httpmime:4.5.13")!!)
 
     modImplementation("com.terraformersmc:modmenu:3.+")
 }

@@ -2,16 +2,14 @@ package dev.isxander.shotify.config
 
 import dev.isxander.shotify.util.client
 import dev.isxander.settxi.clothconfig.SettxiGuiWrapper
-import dev.isxander.settxi.impl.OptionContainer
-import dev.isxander.settxi.impl.boolean
-import dev.isxander.settxi.impl.int
-import dev.isxander.settxi.impl.option
+import dev.isxander.settxi.impl.*
 import dev.isxander.shotify.Shotify
 import dev.isxander.shotify.ui.preview.ScreenshotPreview
 import net.minecraft.text.TranslatableText
 import java.io.File
 
-object ShotifyConfig : SettxiGuiWrapper(TranslatableText("shotify.config.title"), File(client.runDirectory, "config/shotify.json")) {
+object ShotifyConfig :
+    SettxiGuiWrapper(TranslatableText("shotify.config.title"), File(client.runDirectory, "config/shotify.json")) {
     private const val RENDERING_CATEGORY = "shotify.config.category.rendering"
     private const val UPLOAD_CATEGORY = "shotify.config.category.upload"
 
@@ -42,10 +40,10 @@ object ShotifyConfig : SettxiGuiWrapper(TranslatableText("shotify.config.title")
         range = 1..10
     }
 
-    var uploadToImgur by boolean(true) {
-        name = "shotify.config.upload_imgur.name"
+    var uploadProvider by option(UploadProvider.Imgur) {
+        name = "shotify.config.upload_provider.name"
         category = UPLOAD_CATEGORY
-        description = "shotify.config.upload_imgur.description"
+        description = "shotify.config.upload_provider.description"
     }
 
     var copyUploadedUrlToClipboard by boolean(true) {
@@ -54,10 +52,28 @@ object ShotifyConfig : SettxiGuiWrapper(TranslatableText("shotify.config.title")
         description = "shotify.config.copy_upload_clipboard.description"
     }
 
+    var ascellaUserId by string("") {
+        name = "shotify.config.ascella_user_id.name"
+        category = UPLOAD_CATEGORY
+        description = "shotify.config.ascella_user_id.description"
+    }
+
+    var ascellaUserToken by string("") {
+        name = "shotify.config.ascella_user_token.name"
+        category = UPLOAD_CATEGORY
+        description = "shotify.config.ascella_user_token.description"
+    }
+
     object PreviewDirection : OptionContainer() {
         val TopLeft = option("shotify.config.preview_direction.top_left")
         val TopRight = option("shotify.config.preview_direction.top_right")
         val BottomLeft = option("shotify.config.preview_direction.bottom_left")
         val BottomRight = option("shotify.config.preview_direction.bottom_right")
+    }
+
+    object UploadProvider : OptionContainer() {
+        val None = option("shotify.config.upload_provider.none")
+        val Imgur = option("shotify.config.upload_provider.imgur")
+        val Ascella = option("shotify.config.upload_provider.ascella")
     }
 }

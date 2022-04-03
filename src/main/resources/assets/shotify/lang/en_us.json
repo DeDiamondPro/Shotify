@@ -20,10 +20,17 @@
   "shotify.config.preview_time.name": "Preview Time",
   "shotify.config.preview_time.description": "How long to show the screenshot preview.",
   "shotify.config.category.upload": "Uploading",
-  "shotify.config.upload_imgur.name": "Upload To Imgur",
-  "shotify.config.upload_imgur.description": "Uploads the screenshot to Imgur.",
   "shotify.config.copy_upload_clipboard.name": "Copy URL to Clipboard",
   "shotify.config.copy_upload_clipboard.description": "Copies the URL to the clipboard.",
+  "shotify.config.upload_provider.name": "Upload provider",
+  "shotify.config.upload_provider.description": "The host your screenshot is uploaded to.",
+  "shotify.config.ascella_user_id.name": "Ascella user id",
+  "shotify.config.ascella_user_id.description": "Your Ascella user id.",
+  "shotify.config.ascella_user_token.name": "Ascella access token",
+  "shotify.config.ascella_user_token.description": "Your Ascella access token.",
+  "shotify.config.upload_provider.none": "None",
+  "shotify.config.upload_provider.imgur": "Imgur",
+  "shotify.config.upload_provider.ascella": "Ascella",
 
   "shotify.update.available": "A Shotify update is available: "
 }
