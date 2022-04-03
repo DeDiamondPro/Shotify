@@ -43,7 +43,7 @@ object AscellaUploadTask : UploadTask {
         val r = textBuilder.toString();
         val json = json.decodeFromString<AscellaResponse>(r)
 
-        if (json.code != 200 || !json.success) {
+        if (json.code == 200 && json.success) {
             return Screenshot(screenshot.image, screenshot.file, URL(json.url))
         } else {
             throw RuntimeException("Failed to upload image to Ascella: ${json.code}")
