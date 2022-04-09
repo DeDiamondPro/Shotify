@@ -19,8 +19,7 @@ object AscellaUploadTask : UploadTask {
     override fun upload(screenshot: Screenshot): Screenshot {
         val httpClient = HttpClients.createDefault()
         val uploadFile = HttpPost("https://ascella.wtf/v2/ascella/upload")
-        uploadFile.addHeader("x-user-id", ShotifyConfig.ascellaUserId)
-        uploadFile.addHeader("x-user-token", ShotifyConfig.ascellaUserToken)
+        uploadFile.addHeader("authorization", ShotifyConfig.ascellaApiKey)
         val builder = MultipartEntityBuilder.create()
 
         builder.addBinaryBody(

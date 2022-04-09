@@ -52,16 +52,10 @@ object ShotifyConfig :
         description = "shotify.config.copy_upload_clipboard.description"
     }
 
-    var ascellaUserId by string("") {
-        name = "shotify.config.ascella_user_id.name"
+    var ascellaApiKey by string("") {
+        name = "shotify.config.ascella_api_key.name"
         category = UPLOAD_CATEGORY
-        description = "shotify.config.ascella_user_id.description"
-    }
-
-    var ascellaUserToken by string("") {
-        name = "shotify.config.ascella_user_token.name"
-        category = UPLOAD_CATEGORY
-        description = "shotify.config.ascella_user_token.description"
+        description = "shotify.config.ascella_api_key.description"
     }
 
     object PreviewDirection : OptionContainer() {
